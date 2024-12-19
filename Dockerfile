@@ -1,6 +1,6 @@
 # Define base image
-FROM  openjdk:17-oracle
-ADD target/winners-ledger.jar winners-ledger.jar
-RUN apt-get update && apt-get install -y sudo
+FROM  openjdk:22-jdk-slim
+LABEL authors="eviogheneomuabor"
+ADD target/winners-ledger-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "/winners-ledger.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
