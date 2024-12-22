@@ -5,7 +5,6 @@ import com.stanbic.service.multipay.dto.request.AddLedgerEntriesRequest;
 import com.stanbic.service.multipay.dto.request.CreateLedgerRequest;
 import com.stanbic.service.multipay.dto.response.GeneralResponse;
 import com.stanbic.service.multipay.services.CreateLedgerService;
-import com.stanbic.service.multipay.services.nibss.NibssAuthorization;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
