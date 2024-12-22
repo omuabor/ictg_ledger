@@ -11,7 +11,7 @@ public class GeneralResponse {
 
     private String responseCode;
     private String responseMsg;
-    private HashMap<String, Object> responseDetails;
+    private  Object responseDetails;
 
     public GeneralResponse(String responseCode, String responseMsg, String key, String value) {
         HashMap<String, Object> responseInformation = new HashMap<>();
@@ -22,7 +22,7 @@ public class GeneralResponse {
     }
 
 
-    public GeneralResponse(String responseCode, String responseMsg, HashMap<String, Object> responseDetails) {
+    public GeneralResponse(String responseCode, String responseMsg, Object responseDetails) {
 
         this.responseDetails = responseDetails;
         this.responseCode = responseCode;

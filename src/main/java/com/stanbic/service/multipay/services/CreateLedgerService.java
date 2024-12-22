@@ -82,4 +82,11 @@ public class CreateLedgerService {
         return new GeneralResponse(_00.getResponseCode(), _00.getResponseMsg(), responseDetails);
 
     }
+
+    public GeneralResponse getAllLedgersOpened(){
+        List<Ledger> allLedgers = (List<Ledger>) ledgerRepository.findAll();
+
+        return new GeneralResponse(_00.getResponseCode(), _00.getResponseMsg(), allLedgers);
+
+    }
 }

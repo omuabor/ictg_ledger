@@ -11,24 +11,27 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import static org.springframework.http.HttpStatus.OK;
 
 @Controller
 @RequiredArgsConstructor
 @Slf4j
+@RequestMapping("/api/v1/ledger")
 public class LedgerController {
     private final CreateLedgerService createLedgerService;
 
-    @PostMapping("/api/v1/ledger/create")
+    @PostMapping("/create")
     public ResponseEntity<GeneralResponse> createLedger(@Valid @RequestBody CreateLedgerRequest createLedgerRequest){
         return new ResponseEntity<>(createLedgerService.createLedger(createLedgerRequest), OK);
 
     }
 
-    @PostMapping("/api/v1/ledger/add-entries")
+    @PostMapping("/entries")
     public ResponseEntity<GeneralResponse> addLedgerEntries(@Valid @RequestBody AddLedgerEntriesRequest addLedgerEntriesRequest){
 
         log.info("Add Ledger entries passed to payload {}", addLedgerEntriesRequest);
@@ -37,11 +40,9 @@ public class LedgerController {
 
     }
 //
-//    @GetMapping("/api/v1/ledger/list-ledgers")
-//    public ResponseEntity<GeneralResponse> getBatchSummary(@Valid @PathVariable String batchId){
-//        return null;
-//    }
-//
-//    @GetMapping()
+    @GetMapping("/all")
+    public ResponseEntity<GeneralResponse> getAllLedgers(){
+        return new ResponseEntity<>(createLedgerService.getAllLedgersOpened(), OK);
+    }
 
 }
