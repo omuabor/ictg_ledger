@@ -20,17 +20,16 @@ import static org.springframework.http.HttpStatus.OK;
 @Controller
 @RequiredArgsConstructor
 @Slf4j
-@RequestMapping("/api/v1/ledger")
 public class LedgerController {
     private final CreateLedgerService createLedgerService;
 
-    @PostMapping("/create")
+    @PostMapping("/api/v1/ledger/create")
     public ResponseEntity<GeneralResponse> createLedger(@Valid @RequestBody CreateLedgerRequest createLedgerRequest){
         return new ResponseEntity<>(createLedgerService.createLedger(createLedgerRequest), OK);
 
     }
 
-    @PostMapping("/entries")
+    @PostMapping("/api/v1/ledger/entries")
     public ResponseEntity<GeneralResponse> addLedgerEntries(@Valid @RequestBody AddLedgerEntriesRequest addLedgerEntriesRequest){
 
         log.info("Add Ledger entries passed to payload {}", addLedgerEntriesRequest);
@@ -39,7 +38,7 @@ public class LedgerController {
 
     }
 //
-    @GetMapping("/all")
+    @GetMapping("/api/v1/ledger/all")
     public ResponseEntity<GeneralResponse> getAllLedgers(){
         return new ResponseEntity<>(createLedgerService.getAllLedgersOpened(), OK);
     }
